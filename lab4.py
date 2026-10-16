@@ -9,6 +9,7 @@
 #*****************************************************************************
 from datetime import datetime
 from os import get_terminal_size
+from simple_calc import addition, subtraction, multiplication, division
 #from .file1 import func1, func2
 #from .file2 import func2 as f2
 
@@ -19,7 +20,10 @@ def test():
 
 # Menu Options; the name of the function to display and the app executable
 OPTIONS = [
-    {"name":"datetime.now","app":test},
+    {"name":"Add Numbers","app":addition},
+    {"name":"Subtract Numbers","app":subtraction},
+    {"name":"Multiply Numbers","app":multiplication},
+    {"name":"Divide Numbers","app":division},
     #{"name":"func1","app":func1},
     #{"name":"func2","app":func2},
     #{"name":"f2","app":f2}
@@ -28,7 +32,7 @@ OPTIONS = [
 
 # Formats a string with whitespace on either side of it to size of the
 # width minus 2. Example:
-#"                              Title                                        "
+#"                                   Title                                   "
 # - Josh Meyer
 def center_format_string(width, string):
     # Determine the size of whitespace needed on each side
