@@ -1,8 +1,8 @@
 #*****************************************************************************
-# Author:          Josh Meyer 
+# Author:          Josh Meyer and Jake Nishikido
 # Lab:             CIS-133Y Lab4
-# Date:            10/13/2026
-# Description:     
+# Date:            10/16/2026
+# Description:     Menu Driven Calculator App with Input Validation
 # Input:           
 # Output:          
 # Sources:         
@@ -10,13 +10,8 @@
 from datetime import datetime
 from os import get_terminal_size
 from simple_calc import addition, subtraction, multiplication, division
-#from .file1 import func1, func2
-#from .file2 import func2 as f2
+from valid import get_string
 
-# Placeholder function
-def test():
-    print(datetime.now())
-    input()
 
 # Menu Options; the name of the function to display and the app executable
 OPTIONS = [
@@ -24,9 +19,6 @@ OPTIONS = [
     {"name":"Subtract Numbers","app":subtraction},
     {"name":"Multiply Numbers","app":multiplication},
     {"name":"Divide Numbers","app":division},
-    #{"name":"func1","app":func1},
-    #{"name":"func2","app":func2},
-    #{"name":"f2","app":f2}
 ]
 
 
@@ -130,7 +122,7 @@ def main():
         banner_lines = display_banner(app_name, border_length)
         display_menu(OPTIONS, border_length, border_height, banner_lines)
         # Prompt for a selection from the menu
-        selected = input("> ")
+        selected = get_string("> ")
         # Validate input is a digit
         if str.isdigit(selected):
             # Validate the digit falls within the number of options
