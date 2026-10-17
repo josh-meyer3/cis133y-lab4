@@ -2,65 +2,93 @@
 # Author:          Josh Meyer 
 # Lab:             CIS-133Y Lab4
 # Date:            10/16/2026
-# Description:     
-# Input:           
-# Output:          
+# Description:     A library of simple calculations
+# Input:           string: run, integer: total, float: num
+# Output:          float: sum
 # Sources:         
 #*****************************************************************************
 import valid
 
-def addition():
-    num = -1
-    sum = 0
-    print("Add multiple numbers together; specify 0 to stop.")
-    while num != 0:
-        num = valid.get_integer()
-        sum += num
-    print("The result is: " + str(sum))
-    input("... Press Enter to Continue ...")
-
-def subtraction():
+# The base calculation function that accepts a type of calculation to perform
+# and prompts the user for the number of variables and their values to execute
+# the desired calculation.
+# -Josh Meyer
+def _calculation(type):
+    # Initialize values
     count = 0
-    num = -1
     sum = 0
-    print("Subtract multiple numbers from each other; specify 0 to stop.")
-    while num != 0:
-        num = valid.get_integer()
+    # Prompt for the total number of variables
+    total = valid.get_integer("Specify the number of values to prompt for :")
+    # Loop through until the total number is reached
+    while count < total:
+        # Prompt for the value of the variable
+        num = valid.get_real()
+        # If this is the first variable, simply assign the value
         if count == 0:
             sum = num
-        else:
+        # If the type is "add", add the vaule to sum
+        elif type == "add":
+            sum += num
+        # If the type is "sub", subtract the value from sum
+        elif type == "sub":
             sum -= num
-        count += 1
-    print("The result is: " + str(sum))
-    input("... Press Enter to Continue ...")
-
-def multiplication():
-    count = 0
-    sum = 0
-    total = valid.get_integer("Specify the number of integers to prompt for: ")
-    while count < total:
-        num = valid.get_integer()
-        if count == 0:
-            sum = num
-        else:
+        # If the type is "mul", multiply the value with sum
+        elif type == "mul":
             sum *= num
-        count += 1
-    print("The result is: " + str(sum))
-    input("... Press Enter to Continue ...")
-
-def division():
-    count = 0
-    sum = 0
-    total = valid.get_integer("Specify the number of integers to prompt for: ")
-    while count < total:
-        num = valid.get_integer()
-        if num == 0:
-            print("Cannot divide by 0...")
-            continue
-        if count == 0:
-            sum = num
-        else:
+        # If the type is "div", divide the value from sum
+        elif type == "div":
+            # if the value is zero, state that is not allowed and continue
+            if num == 0:
+                print("Cannot divide by 0...")
+                continue
             sum /= num
+        # All else, state it is an unknown type and exit the loop
+        else:
+            print("Unknown type...")
+            break
         count += 1
     print("The result is: " + str(sum))
-    input("... Press Enter to Continue ...")
+
+
+# The wrapper function for calculating Addition
+# -Josh Meyer
+def addition():
+    run = "y"
+    # While run is set to "y" or "yes" run the add calculation and prompt for
+    # additional executions
+    while run == "y" or run == "yes":
+        _calculation("add")
+        run = valid.get_y_or_n("Add additional numbers? (y/N): ")
+
+    
+# The wrapper function for calculating Subtraction
+# -Josh Meyer
+def subtraction():
+    run = "y"
+    # While run is set to "y" or "yes" run the subtract calculation and prompt
+    # for additional executions
+    while run == "y" or run == "yes":
+        _calculation("sub")
+        run = valid.get_y_or_n("Subtract additional numbers? (y/N): ")
+
+
+# The wrapper function for calculating Multiplication
+# -Josh Meyer
+def multiplication():
+    run = "y"
+    # While run is set to "y" or "yes" run the multiply calculation and prompt
+    # for additional executions
+    while run == "y" or run == "yes":
+        _calculation("mul")
+        run = valid.get_y_or_n("Multiply additional numbers? (y/N): ")
+
+
+# The wrapper function for calculating Division
+# -Josh Meyer
+def division():
+    run = "y"
+    # While run is set to "y" or "yes" run the divide calculation and prompt
+    # for additional executions
+    while run == "y" or run == "yes":
+        _calculation("div")
+        run = valid.get_y_or_n("Divide additional numbers? (y/N): ")

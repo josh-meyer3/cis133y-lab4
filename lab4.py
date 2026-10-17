@@ -115,7 +115,7 @@ def main():
     selected=""
     while selected.lower() != "q":
         # The name of the Application
-        app_name = "Application Name Here"
+        app_name = "Simple Calculator"
         # Get the dimensions of the screen
         border_length, border_height = get_terminal_size()
         # Display the Welcome Banner
