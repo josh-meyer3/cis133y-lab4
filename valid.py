@@ -1,3 +1,14 @@
+#*****************************************************************************
+# Author:          Jake Nishikido
+# Lab:             CIS-133Y Lab4
+# Date:            10/16/2026
+# Description:     Module for validating various types of input
+# Input:           
+# Output:          
+# Sources:         
+#*****************************************************************************
+
+
 def get_integer(prompt="Please enter an integer: "):
     """
     Function to prompt for and return a valid integer.
@@ -8,7 +19,7 @@ def get_integer(prompt="Please enter an integer: "):
         try:
             num = int(input(prompt))
             return num
-        except:
+        except ValueError:
             print("Invalid integer.")
 
 
@@ -22,7 +33,7 @@ def get_real(prompt="Please enter a real number: "):
         try:
             num = float(input(prompt))
             return num
-        except:
+        except ValueError:
             print("Invalid number.")
 
 
@@ -43,15 +54,21 @@ def get_string(prompt="Please enter a string: "):
 
 def get_y_or_n(prompt="Please enter 'y' or 'n': "):
     """
-    Function to prompt for and return 'y' or 'n'.
+    Function to prompt for and return 'y', 'n', or an empty string.
     'Y', 'N', and all cases of 'yes' and 'no' are accepted.
+    An empty string is accepted for debugging purposes.
     :param prompt: string Optional string to use as prompt
-    :return: string Non-empty string of characters
+    :return: string 'y', 'n', or an empty string
     """
     answer = input(prompt).lower()
-    while answer != "n" and answer != "y" and answer != "no" and answer != "yes" and answer != "":
+    
+    while answer not in ("y", "n", "yes", "no", ""):
         print("Invalid response.")
-        answer = input(prompt)
-        answer = answer.lower()
+        answer = input(prompt).lower()
 
-    return answer
+    if answer in ("y", "yes"):
+        return "y"
+    elif answer in ("n", "no"):
+        return "n"
+    else:
+        return ""
