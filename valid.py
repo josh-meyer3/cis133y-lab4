@@ -2,10 +2,12 @@
 # Author:          Jake Nishikido
 # Lab:             CIS-133Y Lab4
 # Date:            10/16/2026
-# Description:     Module for validating various types of input
-# Input:           
-# Output:          
-# Sources:         
+# Description:     Provides reusable functions to validate user input.
+# Input:           Optional prompt strings and user-entered integers,
+#                  real numbers, nonblank strings, and yes/no responses.           
+# Output:          Validated int, float, or str return values; displays
+#                  error messages when input is invalid.         
+# Sources:         Google, W3Schools, Textbook
 #*****************************************************************************
 
 
