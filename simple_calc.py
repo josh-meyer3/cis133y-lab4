@@ -19,7 +19,9 @@ def _calculation(calc_type):
     sum = 0
 
     # Prompt for the total number of variables
-    total = valid.get_integer("Specify the number of values to prompt for (minimum 2):")
+    total = valid.get_integer(
+        "Specify the number of values to prompt for (minimum 2):"
+        )
     # If the input was less than 2, set it to 2
     if total < 2:
         total = 2
