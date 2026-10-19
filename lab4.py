@@ -3,8 +3,8 @@
 # Lab:             CIS-133Y Lab4
 # Date:            10/16/2026
 # Description:     Menu Driven Calculator App with Input Validation
-# Input:           
-# Output:          
+# Input:           string: selected, integer: selected
+# Output:          string: display_string, string: whitespace
 # Sources:         
 #*****************************************************************************
 from datetime import datetime
@@ -32,6 +32,7 @@ def center_format_string(width, string):
     # Generate the formatted string
     display_string = "{spacing}{naming}{spacing}".format(spacing = \
         (" " * whitespace), naming = string)
+    
     # If there is an odd number of characters in the display string, add
     # an extra space to the end
     if len(display_string) != (width - 2):
@@ -63,13 +64,16 @@ def display_menu(options, width, height, banner = 0, fill_screen = True):
         # If fill the screen is selected determine the number of extra lines
         # needed, subtracting an extra 3 for the input request and quit option
         whitelines = height - len(options) - banner - 3
+
         for i in range(0, whitelines):
             # For each extra line, print a bordered blank line
             print("*{spacing}*".format(spacing = (" " * (width - 2))))
+
     for i in range(0, len(options)):
         # Set the number for selection and the name of the function
         display_left_formatted_string(width,"{num}) {name}".format(\
             num = i + 1, name = OPTIONS[i]["name"]))
+        
     # Add an option for Quit
     display_left_formatted_string(width, "q) Quit Application")
     # Print the bottom border
@@ -89,6 +93,7 @@ def display_banner(title, width, show_datetime = True):
     #  with whitespace.
     display_string = center_format_string(width, title)
     print("*{string}*".format(string = display_string))
+
     if show_datetime:
         # Get the current date and time
         current_time = datetime.now()
@@ -99,6 +104,7 @@ def display_banner(title, width, show_datetime = True):
         #  with whitespace.
         display_string = center_format_string(width, current_time_string)
         print("*{string}*".format(string = display_string))
+
     # Print bottom border
     print("*" * (width))
     # Return the number of lines displayed
@@ -113,16 +119,19 @@ def display_banner(title, width, show_datetime = True):
 # - Josh Meyer
 def main():
     selected=""
+
     while selected.lower() != "q":
         # The name of the Application
         app_name = "Simple Calculator"
         # Get the dimensions of the screen
         border_length, border_height = get_terminal_size()
-        # Display the Welcome Banner
+        # Display the Welcome Banner and get the number of lines
         banner_lines = display_banner(app_name, border_length)
+        # Display the Menu
         display_menu(OPTIONS, border_length, border_height, banner_lines)
         # Prompt for a selection from the menu
         selected = get_string("> ")
+
         # Validate input is a digit
         if str.isdigit(selected):
             # Validate the digit falls within the number of options
