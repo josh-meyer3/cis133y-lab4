@@ -136,6 +136,9 @@ def main():
         if str.isdigit(selected):
             # Validate the digit falls within the number of options
             if int(selected) > 0 and int(selected) < len(OPTIONS) + 1:
+                # From the OPTIONS array, get the selected index. Get the
+                # value from the "app" key, which is an imported function.
+                # With the parentheses added to the function, it executes.
                 OPTIONS[int(selected) - 1]["app"]()
         print("")
 
