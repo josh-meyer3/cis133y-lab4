@@ -4,7 +4,8 @@
 # Date:            10/16/2026
 # Description:     Menu Driven Calculator App with Input Validation
 # Input:           string: selected, integer: selected
-# Output:          string: display_string, string: whitespace
+# Output:          Top of screen banner and a dynamic menu for displaying
+#                  each available option.
 # Sources:         
 #*****************************************************************************
 from datetime import datetime

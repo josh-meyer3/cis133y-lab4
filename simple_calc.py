@@ -4,7 +4,7 @@
 # Date:            10/16/2026
 # Description:     A library of simple calculations
 # Input:           string: run, integer: total, float: num
-# Output:          float: sum
+# Output:          The results of different calculations.
 # Sources:         
 #*****************************************************************************
 import valid
